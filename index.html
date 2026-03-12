@@ -1238,17 +1238,30 @@ async function handleIntentConfirm(){
 }
 
 function openPrivacyModal(){
-    document.getElementById('privacyModal').style.display = 'block';
-    document.body.style.overflow = 'hidden';
-}
-function closePrivacyModal(){
-    document.getElementById('privacyModal').style.display = 'none';
-    document.body.style.overflow = 'auto';
-}
-window.onclick = function(e){
     const modal = document.getElementById('privacyModal');
-    if (e.target === modal) { closePrivacyModal(); }
-};
+    if (modal) { modal.style.display = 'block'; document.body.style.overflow = 'hidden'; }
+}
+
+function closePrivacyModal(){
+    const modal = document.getElementById('privacyModal');
+    if (modal) { modal.style.display = 'none'; document.body.style.overflow = 'auto'; }
+}
+
+document.addEventListener('click', e => {
+    const modal = document.getElementById('privacyModal');
+    if (modal && e.target === modal) { closePrivacyModal(); }
+});
+
+window.openPrivacyModal = openPrivacyModal;
+window.closePrivacyModal = closePrivacyModal;
+window.openAgeModal = openAgeModal;
+window.closeAgeModal = closeAgeModal;
+window.confirmAgeAccess = confirmAgeAccess;
+window.openUnlockModal = openUnlockModal;
+window.closeUnlockModal = closeUnlockModal;
+window.closeContactIntentModal = closeContactIntentModal;
+
+})();
 </script>
 
 
