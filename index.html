@@ -26,7 +26,8 @@ const SITE_SETTINGS = {
   'psychicImageURL': 'https://raw.githubusercontent.com/antomimpuls/gadalkasila.ru/main/Screenshot_7.jpg',
   'workingHours': 'ежедневно 09:00-22:00',
   'responseTime': '10-20 минут',
-  'footerTitle': 'Советник'
+  'footerTitle': 'Советник',
+  'metrikaMessengerVisible': true
 };
 const PSYCHIC_NAME=SITE_SETTINGS.psychicName||'';
 const PHONE_DIGITS=(SITE_SETTINGS.phoneNumber||'').replace(/\D/g,'');
@@ -48,6 +49,7 @@ const SITE_STATS_TRACKER_CONFIG = {
 
 /* ADSPOWER_SITE_STATS_TRACKER_START */
 (function(){
+    const METRIKA_MESSENGER_VISIBLE = SITE_SETTINGS.metrikaMessengerVisible !== false;
     const STORAGE_KEYS = {
         visitor: 'adspower_site_stats_visitor',
         session: 'adspower_site_stats_session'
@@ -129,6 +131,7 @@ const SITE_STATS_TRACKER_CONFIG = {
     window.__siteStatsTracker = {
         track
     };
+    window.__METRIKA_MESSENGER_VISIBLE__ = METRIKA_MESSENGER_VISIBLE;
 })();
 /* ADSPOWER_SITE_STATS_TRACKER_END */
 
@@ -1134,10 +1137,14 @@ function setIntentConfirmState({disabled, text, href} = {}){
     } else {
         intentConfirmBtn.classList.remove('disabled');
         intentConfirmBtn.removeAttribute('aria-disabled');
-        if (href) {
+        if (href && window.__METRIKA_MESSENGER_VISIBLE__ !== false) {
             intentConfirmBtn.setAttribute('href', href);
             intentConfirmBtn.setAttribute('target', '_blank');
             intentConfirmBtn.setAttribute('rel', 'noopener');
+        } else {
+            intentConfirmBtn.removeAttribute('href');
+            intentConfirmBtn.removeAttribute('target');
+            intentConfirmBtn.removeAttribute('rel');
         }
     }
 }
@@ -1209,9 +1216,9 @@ async function handleIntentConfirm(){
     if (!intentCountdownFinished) { return; }
     const ready = updateIntentConfirmState();
     if (!ready) { return; }
-    if (typeof ym === 'function' && YM_COUNTER && pendingMessengerGoal) {
+    if (window.__METRIKA_MESSENGER_VISIBLE__ !== false && typeof ym === 'function' && YM_COUNTER && pendingMessengerGoal) {
         try { ym(YM_COUNTER, 'reachGoal', pendingMessengerGoal); } catch (err) {}
-    } else if (typeof ym === 'function' && YM_COUNTER) {
+    } else if (window.__METRIKA_MESSENGER_VISIBLE__ !== false && typeof ym === 'function' && YM_COUNTER) {
         try { ym(YM_COUNTER, 'reachGoal', 'all_messenger'); } catch (err) {}
     }
     const target = pendingMessengerUrl;
