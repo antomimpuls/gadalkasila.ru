@@ -294,7 +294,7 @@ p{font-size:clamp(1rem,2vw,1.1rem);color:#a8a8b8;margin-bottom:15px;line-height:
 .address-info p{margin:5px 0;color:#a8a8b8;font-size:0.85rem}
 footer{background:#05050a;padding:40px 0;text-align:center;border-top:1px solid rgba(255,255,255,0.05)}
 @media(max-width:1024px){.hero-grid{grid-template-columns:1fr;text-align:center}.hero-img{max-width:500px;margin:0 auto}}
-@media(max-width:768px){.trust-grid{grid-template-columns:1fr}.stats{grid-template-columns:1fr;gap:15px}.cards{grid-template-columns:1fr}.btn{padding:15px 28px;font-size:0.95rem}.hero-cta .btn{min-width:unset;flex:1 1 100%}.sticky-messengers{bottom:15px;right:15px;left:15px}.sticky-messengers .btn{width:100%}.hero{padding:60px 0 80px}.hero-grid>div:first-child{order:2;margin-top:25px}.hero-grid>div:last-child{order:1}.hero-img{margin:0 auto 16px}.psychic-name{margin-top:10px;padding:12px 15px}.psychic-name-title{font-size:1.3rem}.psychic-name-subtitle{font-size:0.85rem}}
+@media(max-width:768px){.trust-grid{grid-template-columns:1fr}.stats{grid-template-columns:1fr;gap:15px}.cards{grid-template-columns:1fr}.btn{padding:15px 28px;font-size:0.95rem}.hero-cta .btn{min-width:unset;flex:1 1 100%}.sticky-messengers{bottom:15px;right:15px}.sticky-messenger-toggle{width:58px;height:58px;font-size:1.45rem}.sticky-messenger-option{min-width:170px;padding:11px 16px}.hero{padding:60px 0 80px}.hero-grid>div:first-child{order:2;margin-top:25px}.hero-grid>div:last-child{order:1}.hero-img{margin:0 auto 16px}.psychic-name{margin-top:10px;padding:12px 15px}.psychic-name-title{font-size:1.3rem}.psychic-name-subtitle{font-size:0.85rem}}
 @media(max-width:480px){.container{padding:0 15px}.btn{padding:14px 25px}.card{padding:25px 20px}}
 .slider{position:relative;overflow:hidden;max-width:900px;margin:0 auto}
 .slider-wrapper{display:flex;transition:transform 0.5s ease}
@@ -671,158 +671,6 @@ footer{background:#05050a;padding:40px 0;text-align:center;border-top:1px solid 
 </div>
 </section>
 
-<div class="age-widget" id="ageWidget">
-  <button class="age-widget-btn" data-open-age>Подтвердите 18+</button>
-  <p class="age-widget-note">Это нужно для получения контактов для связи с ясновидящей.</p>
-</div>
-<div class="age-modal" id="ageModal">
-  <div class="age-modal-overlay" onclick="closeAgeModal()"></div>
-  <div class="age-modal-content">
-    <button type="button" class="age-modal-close" onclick="closeAgeModal()" aria-label="Закрыть">&times;</button>
-    <div class="age-modal-icon">18+</div>
-    <h2 class="age-modal-title">Подтвердите возраст</h2>
-    <p class="age-modal-text">Материалы сайта предназначены только для совершеннолетних. Подтвердите, что вам исполнилось 18 лет, чтобы открыть контакты.</p>
-    <label class="age-modal-checkbox">
-      <input type="checkbox" id="ageConfirmCheckbox">
-      <span>Мне исполнилось 18 лет, я согласна с условиями</span>
-    </label>
-    <div class="age-modal-actions">
-      <button type="button" class="btn age-confirm-btn" id="ageConfirmBtn" disabled>Подтвердить и открыть контакты</button>
-      <button type="button" class="btn age-cancel-btn" onclick="closeAgeModal()">Отмена</button>
-    </div>
-  </div>
-</div>
-<div class="age-unlock-modal" id="ageUnlockModal">
-  <strong>Контакты разблокированы</strong>
-  <p>Теперь вы можете написать в WhatsApp и Telegram.</p>
-  <button class="btn" onclick="closeUnlockModal()">Понятно</button>
-</div>
-<div class="contact-intent-modal" id="contactIntentModal">
-  <div class="contact-intent-overlay" onclick="closeContactIntentModal()"></div>
-  <div class="contact-intent-content">
-    <button type="button" class="contact-intent-close" onclick="closeContactIntentModal()" aria-label="Закрыть">&times;</button>
-    <h3 class="contact-intent-title">Последний шаг перед открытием <span class="contact-intent-highlight" id="intentMessengerLabel">WhatsApp</span></h3>
-    <p class="contact-intent-text">Выберите тему обращения и подтвердите, что готовы написать. Так я защищаю контакты от случайных кликов.</p>
-    <div class="intent-step">
-      <label for="intentTopic">Что нужно решить?</label>
-      <select id="intentTopic" class="intent-select">
-        <option value="">Выберите ситуацию</option>
-        <option value="love">Вернуть или удержать любимого</option>
-        <option value="negative">Снять порчу, сглаз или негатив</option>
-        <option value="diagnostic">Нужна диагностика и консультация</option>
-        <option value="other">Другая проблема</option>
-      </select>
-    </div>
-    <div class="intent-step">
-      <label>Подтвердите намерение</label>
-      <label class="intent-checkbox">
-        <input type="checkbox" id="intentReadyCheckbox">
-        <span>Я действительно хочу открыть чат и описать ситуацию</span>
-      </label>
-    </div>
-    <div class="intent-timer" id="intentTimerHint"></div>
-    <div class="contact-intent-actions">
-      <a href="#" class="btn intent-confirm-btn disabled" id="intentConfirmBtn" role="button" aria-disabled="true">Открыть чат</a>
-      <button type="button" class="btn intent-cancel-btn" onclick="closeContactIntentModal()">Вернуться</button>
-    </div>
-  </div>
-</div>
-
-<footer>
-<div class="container">
-<div style="font-size:1.5rem;font-weight:800;background:linear-gradient(135deg,#ddd6fe,#8b5cf6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:15px" id="footerName"></div>
-<p style="color:#a8a8b8;max-width:600px;margin:0 auto 20px">21 год помогаю возвращать любовь, очищать семьи от негатива и защищать дела. На связи в WhatsApp и Telegram ежедневно.</p>
-<p style="margin-bottom:15px"><a href="#" onclick="openPrivacyModal();return false" style="color:#8b5cf6;text-decoration:none;font-size:0.9rem;transition:color 0.3s;cursor:pointer" onmouseover="this.style.color='#ddd6fe'" onmouseout="this.style.color='#8b5cf6'">🧾 Политика конфиденциальности</a></p>
-<p style="color:rgba(255,255,255,0.3);font-size:0.85rem">© 2026 Все права защищены</p>
-</div>
-</footer>
-
-<div id="privacyModal" class="modal">
-<div class="modal-content">
-<span class="modal-close" onclick="closePrivacyModal()">&times;</span>
-<h1>🛡 Политика конфиденциальности</h1>
-<div class="company-info">
-<p><strong>ИП Силанова Надежда Сергеевна</strong></p>
-<p>ОГРНИП: 323470700812945</p>
-<p>ИНН: 784302918476</p>
-<p>Адрес: 191014, г. Санкт-Петербург, наб. Реки Фонтанки, д. 83, офис 12</p>
-<p>Телефон: +7 (932) 638-70-87</p>
-<p>Email: hello@gadalkasila.ru</p>
-</div>
-<p style="font-size:0.9rem;color:#a8a8b8;font-style:italic;margin-bottom:30px">Дата последнего обновления: 18 октября 2025 года</p>
-<h2>1. Общие положения</h2>
-<p>Настоящая Политика конфиденциальности определяет порядок обработки персональных данных, которые получает студия при работе с сайтом <span class="modal-highlight">gadalkasila.ru</span>.</p>
-<p>Пользуясь сайтом, формами обратной связи, мессенджерами или телефоном, вы подтверждаете согласие на обработку данных согласно этой Политике.</p>
-<p>Документ распространяется на все цифровые и офлайн-каналы взаимодействия с клиентами и интересантами.</p>
-<h2>2. Какие данные мы собираем</h2>
-<p>Мы обрабатываем информацию, которую вы передаете добровольно, а также технические данные, необходимые для стабильной работы сервиса.</p>
-<ul>
-<li><span class="modal-highlight">Персональные данные:</span> имя, номер телефона, адрес электронной почты, город, предпочтительный мессенджер.</li>
-<li><span class="modal-highlight">Технические данные:</span> IP-адрес, сведения об устройстве и браузере, реферер, cookie-файлы.</li>
-<li><span class="modal-highlight">Контекст обращения:</span> описание запроса, вложенные документы, записи консультаций (при согласии клиента).</li>
-</ul>
-<h2>3. Для чего используются данные</h2>
-<p>Сведения нужны для предоставления услуг и поддержки качества сервиса.</p>
-<ul>
-<li>Связь с вами и подготовка индивидуальных рекомендаций;</li>
-<li>Оформление договоров, счетов и сопроводительных документов;</li>
-<li>Информирование о статусе работ, отправка материалов и напоминаний;</li>
-<li>Аналитика обращений, развитие проекта и соблюдение требований законодательства.</li>
-</ul>
-<h2>4. Правовые основания обработки</h2>
-<p>Мы руководствуемся следующими правовыми основаниями:</p>
-<ul>
-<li>согласие пользователя, выраженное через сайт, мессенджеры или телефон;</li>
-<li>необходимость исполнения договорных обязательств;</li>
-<li>исполнение требований законодательства в сфере бухгалтерии и налогообложения;</li>
-<li>законные интересы владельца сайта, включая безопасность и предотвращение мошенничества.</li>
-</ul>
-<h2>5. Как мы работаем с данными</h2>
-<h3>5.1. Сбор</h3>
-<p>Информация поступает через формы сайта, WhatsApp, Telegram, электронную почту и телефонные звонки. Дополнительные источники без вашего согласия не используем.</p>
-<h3>5.2. Хранение</h3>
-<p>Данные сохраняются на защищенных серверах и зашифрованных облачных хранилищах, доступ к которым ограничен.</p>
-<h3>5.3. Использование</h3>
-<p>С доступом работают только специалисты, вовлеченные в подготовку и проведение услуг, а также проверенные подрядчики (юристы, бухгалтерия, техническая поддержка).</p>
-<h3>5.4. Сроки</h3>
-<p>Информация хранится не более трех лет с момента завершения сотрудничества либо дольше, если это требуется по закону. По запросу данные могут быть удалены раньше.</p>
-<h2>6. Передача данных третьим лицам</h2>
-<p>Мы не передаем данные третьим лицам, кроме случаев, когда:</p>
-<ul>
-<li>это необходимо для приема платежей или ведения бухгалтерии;</li>
-<li>привлекаются подрядчики для технической поддержки;</li>
-<li>этого требует действующее законодательство Российской Федерации.</li>
-</ul>
-<p>Партнеры получают только минимально необходимую информацию и обязуются соблюдать режим конфиденциальности.</p>
-<h2>7. Защита данных</h2>
-<p>Мы используем комплекс мер безопасности:</p>
-<ul>
-<li>межсетевые экраны и сегментацию доступов;</li>
-<li>шифрование каналов связи и регулярный мониторинг логов;</li>
-<li>резервное копирование и хранение копий на отдельных серверах;</li>
-<li>обучение сотрудников правилам информационной безопасности.</li>
-</ul>
-<h2>8. Права пользователя</h2>
-<p>Вы можете:</p>
-<ul>
-<li>узнать, какие данные хранятся и как они используются;</li>
-<li>попросить обновить, исправить или ограничить обработку;</li>
-<li>отозвать согласие и потребовать удаления данных;</li>
-<li>направить жалобу в Роскомнадзор или иной уполномоченный орган.</li>
-</ul>
-<h2>9. Контакты для запросов</h2>
-<p>По вопросам обработки персональных данных обращайтесь:</p>
-<ul>
-<li>Телефон: +7 (932) 638-70-87</li>
-<li>Email: hello@gadalkasila.ru</li>
-<li>Почтовый адрес: 191014, г. Санкт-Петербург, наб. Реки Фонтанки, д. 83, офис 12</li>
-</ul>
-<h2>10. Заключительные положения</h2>
-<p>Политика может обновляться. Актуальная версия всегда размещена на <span class="modal-highlight">gadalkasila.ru</span>. Рекомендуем периодически проверять этот раздел.</p>
-<p style="margin-top:25px;font-size:0.9rem;color:#a8a8b8">Продолжая пользоваться сайтом, вы подтверждаете согласие с условиями Политики конфиденциальности.</p>
-</div>
-</div>
-
 <script>
 (() => {
 const SETTINGS = window.__SITE_SETTINGS__ || {};
@@ -844,7 +692,7 @@ const AGE_KEY = 'gadalkasila_age_confirmed_v3';
 const ageCheckbox = document.getElementById('ageConfirmCheckbox');
 const ageConfirmBtn = document.getElementById('ageConfirmBtn');
 const footerTitle = SETTINGS.footerTitle || 'Советник';
-let ageConfirmed = localStorage.getItem(AGE_KEY) === '1';
+let ageConfirmed = true;
 let pendingMessengerUrl = '';
 let pendingMessengerGoal = '';
 let intentCountdownTimer = null;
@@ -948,64 +796,110 @@ function initSmoothScroll(){
 function initMessengerIntent(){
     const waButtons = Array.from(document.querySelectorAll('[data-messenger="wa"],[data-wa],.btn-wa'));
     const tgButtons = Array.from(document.querySelectorAll('[data-messenger="tg"],[data-telegram],.btn-tg'));
-    const attachIntentHandlers = (buttons, type, targetUrl) => {
+    const sticky = document.getElementById('stickyMessengers');
+    const stickyToggle = document.getElementById('stickyMessengerToggle');
+    const setStickyOpen = open => {
+        if (!sticky || !stickyToggle) { return; }
+        sticky.classList.toggle('is-open', !!open);
+        stickyToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    };
+    const closeSticky = () => setStickyOpen(false);
+    const toggleSticky = () => {
+        if (!sticky) { return; }
+        setStickyOpen(!sticky.classList.contains('is-open'));
+    };
+    const attachDirectHandlers = (buttons, type, targetUrl) => {
         buttons.forEach(btn => {
+            const isAnchor = btn.tagName === 'A';
             if (btn.tagName === 'A') {
-                btn.removeAttribute('href');
-                btn.removeAttribute('target');
-                btn.removeAttribute('rel');
-                btn.setAttribute('role', 'button');
-                btn.setAttribute('tabindex', '0');
+                if (window.__METRIKA_MESSENGER_VISIBLE__ !== false) {
+                    btn.setAttribute('href', targetUrl);
+                    btn.setAttribute('target', '_blank');
+                    btn.setAttribute('rel', 'noopener');
+                    btn.removeAttribute('role');
+                    btn.removeAttribute('tabindex');
+                } else {
+                    btn.removeAttribute('href');
+                    btn.removeAttribute('target');
+                    btn.removeAttribute('rel');
+                    btn.setAttribute('role', 'button');
+                    btn.setAttribute('tabindex', '0');
+                }
             }
-            const openModal = evt => {
-                if (document.body.classList.contains('contacts-locked')) {
-                    if (evt) { evt.preventDefault(); }
-                    openAgeModal();
-                    return;
+            const openDirect = () => {
+                let opened = false;
+                try {
+                    const newTab = window.open(targetUrl, '_blank');
+                    opened = Boolean(newTab);
+                } catch (err) {}
+                if (!opened) {
+                    try { window.location.href = targetUrl; } catch (err) {}
                 }
-                if (evt) {
-                    evt.preventDefault();
-                    evt.stopPropagation();
-                }
-                openContactIntentModal(type, targetUrl);
             };
-            btn.addEventListener('click', openModal);
-            btn.addEventListener('keydown', evt => {
-                if (evt.key === 'Enter' || evt.key === ' ') {
-                    evt.preventDefault();
-                    openModal(evt);
+            btn.addEventListener('click', evt => {
+                if (window.__METRIKA_MESSENGER_VISIBLE__ !== false && typeof ym === 'function' && YM_COUNTER) {
+                    try {
+                        ym(YM_COUNTER, 'reachGoal', type === 'telegram' ? 'tg_click' : 'wa_click');
+                    } catch (err) {
+                        try { ym(YM_COUNTER, 'reachGoal', 'all_messenger'); } catch (innerErr) {}
+                    }
                 }
+                const trackPromise = window.__siteStatsTracker && typeof window.__siteStatsTracker.track === 'function'
+                    ? window.__siteStatsTracker.track({
+                        channel: type === 'telegram' ? 'telegram' : 'whatsapp',
+                        moduleName: 'direct-click',
+                        buttonLabel: type === 'telegram' ? 'telegram' : 'whatsapp'
+                    })
+                    : Promise.resolve();
+                Promise.resolve(trackPromise).catch(() => {});
+                if (window.__METRIKA_MESSENGER_VISIBLE__ === false || !isAnchor) {
+                    if (evt) {
+                        evt.preventDefault();
+                        evt.stopPropagation();
+                    }
+                    openDirect();
+                }
+                closeSticky();
             });
+            if (window.__METRIKA_MESSENGER_VISIBLE__ === false) {
+                btn.addEventListener('keydown', evt => {
+                    if (evt.key === 'Enter' || evt.key === ' ') {
+                        evt.preventDefault();
+                        openDirect();
+                        closeSticky();
+                    }
+                });
+            }
         });
     };
-    const waUrl = TARGET_WA_URL || WA_BASE_URL;
-    if (waUrl) {
-        attachIntentHandlers(waButtons, 'whatsapp', waUrl);
-    }
-    if (TG_ENABLED && TARGET_TG_URL) {
-        attachIntentHandlers(tgButtons, 'telegram', TARGET_TG_URL);
-    } else {
-        tgButtons.forEach(btn => { btn.style.display = 'none'; });
-        const sticky = document.getElementById('stickyMessengers');
-        if (sticky) {
-            const visible = Array.from(sticky.children).some(child => child.style.display !== 'none');
-            if (!visible) { sticky.style.display = 'none'; }
-        }
-    }
-    if (intentTopic) { intentTopic.addEventListener('change', updateIntentConfirmState); }
-    if (intentReadyCheckbox) { intentReadyCheckbox.addEventListener('change', updateIntentConfirmState); }
-    if (intentConfirmBtn) {
-        intentConfirmBtn.addEventListener('click', evt => {
+    if (sticky && stickyToggle) {
+        stickyToggle.addEventListener('click', evt => {
             evt.preventDefault();
-            handleIntentConfirm();
+            evt.stopPropagation();
+            toggleSticky();
+        });
+        document.addEventListener('click', evt => {
+            if (!sticky.contains(evt.target)) {
+                closeSticky();
+            }
         });
     }
-}
-
-function initDynamicContent(){
-    initSlider();
-    setupReveal();
-    setImagesAndTexts();
+    if (TARGET_WA_URL) {
+        attachDirectHandlers(waButtons, 'whatsapp', TARGET_WA_URL);
+    }
+    if (TG_ENABLED && TARGET_TG_URL) {
+        attachDirectHandlers(tgButtons, 'telegram', TARGET_TG_URL);
+    } else {
+        tgButtons.forEach(btn => { btn.style.display = 'none'; });
+        if (sticky) {
+            const visible = Array.from(sticky.querySelectorAll('[data-wa],[data-telegram]')).some(child => child.style.display !== 'none');
+            if (!visible) { sticky.style.display = 'none'; }
+        }
+        document.querySelectorAll('[data-single-text]').forEach(el => {
+            const fallback = el.getAttribute('data-single-text');
+            if (fallback) { el.textContent = fallback; }
+        });
+    }
 }
 
 function initSlider(){
