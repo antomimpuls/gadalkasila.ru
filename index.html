@@ -164,8 +164,12 @@ p{font-size:clamp(1rem,2vw,1.1rem);color:#a8a8b8;margin-bottom:15px;line-height:
 .btn-tg:hover{box-shadow:0 15px 40px rgba(42,171,238,0.6)}
 .hero-cta{display:flex;flex-wrap:wrap;gap:15px;margin-top:25px}
 .hero-cta .btn{flex:1 1 220px;min-width:200px}
-.sticky-messengers{position:fixed;bottom:20px;right:20px;z-index:999;display:flex;flex-direction:column;gap:12px;animation:pulse 2.4s infinite}
-.sticky-messengers .btn{padding:15px 28px;font-size:0.95rem;box-shadow:0 20px 40px rgba(0,0,0,0.35)}
+.sticky-messengers{position:fixed;bottom:20px;right:20px;z-index:999;display:flex;flex-direction:column;align-items:flex-end;gap:12px}
+.sticky-messenger-options{display:flex;flex-direction:column;align-items:flex-end;gap:10px;opacity:0;transform:translateY(8px) scale(.96);pointer-events:none;transition:opacity .22s ease,transform .22s ease}
+.sticky-messengers.is-open .sticky-messenger-options{opacity:1;transform:translateY(0) scale(1);pointer-events:auto}
+.sticky-messenger-toggle{width:64px;height:64px;border-radius:999px;padding:0;font-size:1.65rem;line-height:1;background:linear-gradient(135deg,#d18a2b,#8b5e1a);box-shadow:0 20px 40px rgba(0,0,0,0.35),0 10px 26px rgba(209,138,43,0.42);display:inline-flex;align-items:center;justify-content:center;animation:pulse 2.4s infinite}
+.sticky-messenger-toggle:hover{transform:translateY(-3px);box-shadow:0 22px 44px rgba(0,0,0,0.42),0 14px 30px rgba(209,138,43,0.5)}
+.sticky-messenger-option{padding:12px 18px;font-size:0.9rem;min-width:188px;box-shadow:0 20px 40px rgba(0,0,0,0.35)}
 @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
 .hero{padding:80px 0;background:linear-gradient(180deg,#0a0a0f,#151520);position:relative;overflow:hidden}
 .hero::before{content:'';position:absolute;top:-50%;left:-20%;right:-20%;height:150%;background:radial-gradient(circle,rgba(139,92,246,0.15),transparent 60%);animation:shimmer 8s ease-in-out infinite}
@@ -328,8 +332,11 @@ footer{background:#05050a;padding:40px 0;text-align:center;border-top:1px solid 
 <body>
 
 <div class="sticky-messengers" id="stickyMessengers">
-<a href="#" class="btn btn-wa messenger-link is-disabled" data-messenger="wa">📲 Написать в WhatsApp</a>
-<a href="#" class="btn btn-tg messenger-link is-disabled" data-messenger="tg">? Перейти в Telegram</a>
+<div class="sticky-messenger-options" id="stickyMessengerOptions">
+<a class="btn btn-wa sticky-messenger-option" data-wa="true" role="button" tabindex="0">📲 WhatsApp</a>
+<a class="btn btn-tg sticky-messenger-option" data-telegram="true" role="button" tabindex="0">✈ Telegram</a>
+</div>
+<button type="button" class="btn sticky-messenger-toggle" id="stickyMessengerToggle" aria-label="Открыть выбор мессенджера" aria-expanded="false">💬</button>
 </div>
 
 <section class="hero">
